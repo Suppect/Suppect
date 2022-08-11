@@ -1,0 +1,21 @@
+/* We will try to analyse a data struction in common use name "union".*/
+/*--------------------------------------------------------------------*/
+#include<stdint.h>
+#include<stdio.h>
+
+/*in this case the member of u1 share the 8-bit's memory with each other. It's pointed out that each member of u1 just use the part of the 8-bit's memory.*/
+typedef union{
+  uint8_t s:1;
+  uint8_t mp:1;
+  uint8_t spare:3;
+  uint8_t version:3;
+}u1;
+int main(){
+  u1 a;
+  a.s=1;
+  a.mp=1;
+  a.spare=3;
+  a.version=4;
+  /*GDB x/1xb &a*/
+}
+
